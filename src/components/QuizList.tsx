@@ -6,12 +6,13 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@/components/card";
+} from "@/components/Card";
+import CardLoader from "@/components/CardLoader";
 
 const QuizList = () => {
   const { isLoading, data: quizzes = [] } = api.quiz.getAll.useQuery();
 
-  if (isLoading) return <>Loading...</>;
+  if (isLoading) return <CardLoader />;
   if (!quizzes) return <>Error...</>;
 
   return (

@@ -13,7 +13,6 @@ export default function Home() {
       </Head>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <NavBar />
-
         <div className="container flex flex-wrap bg-background pt-10">
           <QuizList />
         </div>
