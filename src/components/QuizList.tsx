@@ -8,6 +8,7 @@ import {
   CardTitle,
 } from "@/components/Card";
 import CardLoader from "@/components/CardLoader";
+import { Button } from "@/components/Button";
 
 const QuizList = () => {
   const { isLoading, data: quizzes = [] } = api.quiz.getAll.useQuery();
@@ -24,10 +25,10 @@ const QuizList = () => {
             <CardDescription>{it.description}</CardDescription>
           </CardHeader>
           <CardContent>
-            <p>Card Content</p>
+            <p>Last attempt: 97%</p>
           </CardContent>
           <CardFooter>
-            <p>Card Footer</p>
+            <Button variant="secondary">Start</Button>
           </CardFooter>
         </Card>
       ))}
