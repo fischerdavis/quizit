@@ -10,9 +10,11 @@ import {
   TooltipTrigger,
 } from "@/components/Tooltip";
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
+import { useState } from "react";
 
 const NavBar = () => {
   const user = useUser();
+
   return (
     <nav className="border-bottom-gray-200 border-b py-3">
       <div className="container flex flex-wrap items-center justify-between">
@@ -22,14 +24,7 @@ const NavBar = () => {
             Quizit
           </span>
         </Link>
-        <div className="flex gap-2">
-          <div className="flex-1">
-            <Input type="search" placeholder="Search Quizzes..." />
-          </div>
-          <div>
-            <Button variant="outline">Search</Button>
-          </div>
-        </div>
+        <SearchQuizzes />
         <div className="flex items-center">
           <div>
             <TooltipProvider>
@@ -89,6 +84,31 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
+  );
+};
+
+const SearchQuizzes = () => {
+  const [search, setSearch] = useState<string>("");
+
+  return (
+    <div className="flex gap-2">
+      <div className="flex-1">
+        <Input
+          type="search"
+          placeholder="Search Quizzes..."
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+        />
+      </div>
+      <div>
+        <Link
+          className={buttonVariants({ variant: "outline" })}
+          href={{ pathname: "/search", query: { search } }}
+        >
+          Search
+        </Link>
+      </div>
+    </div>
   );
 };
 

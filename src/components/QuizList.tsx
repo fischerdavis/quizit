@@ -10,28 +10,32 @@ import {
 import CardLoader from "@/components/CardLoader";
 import { Button } from "@/components/Button";
 
-const QuizList = () => {
-  const { isLoading, data: quizzes = [] } = api.quiz.getAll.useQuery();
+const QuizList = ({ name }: { name: string | null }) => {
+  const { isLoading, data: quizzes = [] } = api.quiz.getAll.useQuery({ name });
 
   if (isLoading) return <CardLoader />;
   if (!quizzes) return <>Error...</>;
 
   return (
     <>
-      {quizzes.map((it) => (
-        <Card className={"m-2 w-[318px]"} key={it.id}>
-          <CardHeader>
-            <CardTitle>{it.name}</CardTitle>
-            <CardDescription>{it.description}</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p>Last attempt: 97%</p>
-          </CardContent>
-          <CardFooter>
-            <Button variant="secondary">Start</Button>
-          </CardFooter>
-        </Card>
-      ))}
+      {quizzes.length ? (
+        quizzes.map((it) => (
+          <Card className={"m-2 w-[318px]"} key={it.id}>
+            <CardHeader>
+              <CardTitle>{it.name}</CardTitle>
+              <CardDescription>{it.description}</CardDescription>
+            </CardHeader>
+            <CardContent>3</CardContent>
+            <CardFooter>
+              <Button variant="secondary">Start</Button>
+            </CardFooter>
+          </Card>
+        ))
+      ) : (
+        <div className="flex w-full justify-center">
+          <div>Nothing found.</div>
+        </div>
+      )}
     </>
   );
 };
