@@ -8,7 +8,8 @@ import {
   CardTitle,
 } from "@/components/Card";
 import CardLoader from "@/components/CardLoader";
-import { Button } from "@/components/Button";
+import { buttonVariants } from "@/components/Button";
+import Link from "next/link";
 
 const QuizList = ({ name }: { name: string | null }) => {
   const { isLoading, data: quizzes = [] } = api.quiz.getAll.useQuery({ name });
@@ -27,7 +28,12 @@ const QuizList = ({ name }: { name: string | null }) => {
             </CardHeader>
             <CardContent>3</CardContent>
             <CardFooter>
-              <Button variant="secondary">Start</Button>
+              <Link
+                href={{ pathname: "/quiz", query: { id: it.id } }}
+                className={buttonVariants({ variant: "secondary" })}
+              >
+                Start
+              </Link>
             </CardFooter>
           </Card>
         ))
