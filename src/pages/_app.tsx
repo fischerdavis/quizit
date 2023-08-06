@@ -10,7 +10,7 @@ const MyApp: AppType = ({ Component, pageProps: { ...pageProps } }) => {
     <ClerkProvider {...pageProps}>
       <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
         <NavBar />
-        <div className="container flex flex-wrap bg-background pt-10">
+        <div className="container bg-background pt-10">
           <Component {...pageProps} />
         </div>
       </ThemeProvider>

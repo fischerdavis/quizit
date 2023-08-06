@@ -4,11 +4,11 @@ import z from "zod";
 export const quizRouter = createTRPCRouter({
   getAll: publicProcedure
     .input(z.object({ name: z.string().nullable() }))
-    .query(({ ctx, input }) => {
+    .query(async ({ ctx, input }) => {
       if (input.name) {
         const name = input.name;
 
-        return ctx.prisma.quiz.findMany({
+        return await ctx.prisma.quiz.findMany({
           where: {
             name,
           },

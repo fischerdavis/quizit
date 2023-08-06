@@ -1,5 +1,6 @@
 import { quizRouter } from "@/server/api/routers/Quiz";
 import { createTRPCRouter } from "@/server/api/trpc";
+import { questionRouter } from "@/server/api/routers/Question";
 
 /**
  * This is the primary router for your server.
@@ -8,6 +9,7 @@ import { createTRPCRouter } from "@/server/api/trpc";
  */
 export const appRouter = createTRPCRouter({
   quiz: quizRouter,
+  question: questionRouter,
 });
 
 // export type definition of API

@@ -12,23 +12,32 @@ datasource db {
 }
 
 model Quiz {
-  id          String        @id @default(cuid())
+  id          String     @id @default(cuid())
   name        String
   description String
-  QuizAttempt QuizAttempt[]
+  Attempt     Attempt[]
   creator     String
-  QuizAnswer  QuizAnswer[]
+  Question    Question[]
 }
 
-model QuizAnswer {
-  id      String  @id @default(cuid())
-  quizId  String
-  answer  String
-  correct Boolean @default(false)
-  quiz    Quiz    @relation(fields: [quizId], references: [id], onDelete: Cascade)
+model Answer {
+  id         String   @id @default(cuid())
+  questionId String
+  answer     String
+  correct    Boolean  @default(false)
+  question   Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
 }
 
-model QuizAttempt {
+model Question {
+  id          String   @id @default(cuid())
+  question    String   @default("")
+  quizId      String
+  multiAnswer Boolean  @default(false)
+  Answer      Answer[]
+  quiz        Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+}
+
+model Attempt {
   id     String  @id @default(cuid())
   quizId String
   userId String
