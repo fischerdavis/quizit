@@ -30,7 +30,7 @@ const QuizList = ({ name }: { name: string | null }) => {
             <CardFooter>
               <Link
                 href={{ pathname: "/quiz", query: { id: it.id } }}
-                className={buttonVariants({ variant: "secondary" })}
+                className={buttonVariants({ variant: "default" })}
               >
                 Start
               </Link>

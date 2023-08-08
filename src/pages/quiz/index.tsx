@@ -1,7 +1,7 @@
 import { useRouter } from "next/router";
 import { api } from "@/utils/api";
-import { Checkbox } from "@/components/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/radio-group";
+import { Checkbox } from "@/components/Checkbox";
+import { RadioGroup, RadioGroupItem } from "@/components/RadioGroup";
 import { Label } from "@/components/label";
 
 const Index = () => {

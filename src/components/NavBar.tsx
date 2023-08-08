@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import { ListChecks, LogIn, LogOut, Plus } from "lucide-react";
+import { ListChecks, LogIn, LogOut } from "lucide-react";
 import { Button, buttonVariants } from "@/components/Button";
 import { Input } from "@/components/Input";
 import {
@@ -11,6 +11,7 @@ import {
 } from "@/components/Tooltip";
 import { SignInButton, SignOutButton, useUser } from "@clerk/nextjs";
 import { useState } from "react";
+import { Icons } from "@/components/Icons";
 
 const NavBar = () => {
   const user = useUser();
@@ -37,7 +38,7 @@ const NavBar = () => {
                       size: "sm",
                     })}
                   >
-                    <Plus />
+                    <Icons.plus />
                   </Link>
                 </TooltipTrigger>
                 <TooltipContent>
@@ -102,7 +103,7 @@ const SearchQuizzes = () => {
       </div>
       <div>
         <Link
-          className={buttonVariants({ variant: "outline" })}
+          className={buttonVariants({ variant: "secondary" })}
           href={{ pathname: "/search", query: { search } }}
         >
           Search
